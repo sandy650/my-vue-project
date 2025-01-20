@@ -58,11 +58,14 @@ import { ElMessage } from "element-plus";
 import { useRouter } from "vue-router";
 import Swal from "sweetalert2";
 import axios from "axios";
+import { useUserStore } from "@/store/userStore";
 
 export default {
   name: "MembersLogin",
   setup() {
     const router = useRouter();
+    const userStore = useUserStore();
+    
     const form = ref({
       idNumber: "",
       password: "",
@@ -104,6 +107,9 @@ export default {
               sessionStorage.setItem("username", response.data.data.username);
               sessionStorage.setItem("account", response.data.data.account);
               sessionStorage.setItem("email", response.data.data.email);
+               // 更新 Pinia 狀態
+              userStore.login(response.data.data.username);
+
               Swal.fire({
                 title: "登入成功",
                 text: `歡迎您，${response.data.data.username}`,
@@ -154,6 +160,7 @@ export default {
       goToForgotPwd,
       goToRegister,
       convertToUppercase,
+ 
     };
   },
 };

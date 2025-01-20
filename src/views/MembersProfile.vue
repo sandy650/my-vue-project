@@ -8,6 +8,9 @@
           <p><strong></strong> {{ username }}，您好</p>
           <p><strong>會員等級:</strong> {{ memberLevel }}</p>
           <p><strong>專屬活動碼:</strong> {{ activityCode }}</p>
+          <p><strong>email:</strong> {{ email }}</p>
+          <p><strong>account:</strong> {{ account }}</p>
+          <p><strong>身分證字號:</strong> {{ idNumber }}</p>
         </div>
       </div>
       <!-- 右側功能區塊 -->
@@ -22,7 +25,7 @@
         </div>
         <div class="feature-card" @click="goToMemberInfo">
           <font-awesome-icon :icon="['fas', 'user']" />
-          <p>會員資料</p>
+          <p>修改會員資料</p>
         </div>
         <div class="feature-card" @click="goToActivity">
           <font-awesome-icon :icon="['fas', 'star']" />
@@ -50,17 +53,22 @@ export default {
     const username = ref(sessionStorage.getItem("username") || "訪客");
     const memberLevel = ref("VIP會員");
     const activityCode = ref("EXCL12345");
-
+    const email = ref(sessionStorage.getItem("email") || "訪客");
+    const account = ref(sessionStorage.getItem("account") || "訪客");
+    const idNumber = ref(sessionStorage.getItem("idNumber") || "訪客");
     // 跳轉功能邏輯
     const goToPolicy = () => router.push("/policy");
     const goToClaims = () => router.push("/claims");
-    const goToMemberInfo = () => router.push("/member-info");
+    const goToMemberInfo = () => router.push("/memberInfo");
     const goToActivity = () => router.push("/activity");
 
     return {
       username,
       memberLevel,
       activityCode,
+      email,
+      account,
+      idNumber,
       goToPolicy,
       goToClaims,
       goToMemberInfo,
