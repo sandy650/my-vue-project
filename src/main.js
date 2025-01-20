@@ -50,5 +50,15 @@ app.use(Antd).mount('#app');
 import ElementPlus from "element-plus";
 import "element-plus/dist/index.css";
 app.use(ElementPlus);
+// 引入 Font Awesome
+import { library } from "@fortawesome/fontawesome-svg-core";
+// 引入 Font Awesome Vue 元件
+import { faFileShield, faUser, faShieldAlt } from "@fortawesome/free-solid-svg-icons";
+// 將需要的圖示加入到 library
+import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 
+// 將需要的圖示加入到 library
+library.add(faFileShield, faUser, faShieldAlt);
 
+// 全域註冊 Font Awesome 元件
+app.component("font-awesome-icon", FontAwesomeIcon);

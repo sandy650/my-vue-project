@@ -102,6 +102,8 @@ export default {
               sessionStorage.setItem("idNumber", response.data.data.idNumber);
               sessionStorage.setItem("sessionId", response.data.data.sessionId);
               sessionStorage.setItem("username", response.data.data.username);
+              sessionStorage.setItem("account", response.data.data.account);
+              sessionStorage.setItem("email", response.data.data.email);
               Swal.fire({
                 title: "登入成功",
                 text: `歡迎您，${response.data.data.username}`,
@@ -131,10 +133,6 @@ export default {
         }
       });
     };
-
-
-
-
 
     const goToForgotPwd = () => {
       router.push("/membersforgotPwd1");
