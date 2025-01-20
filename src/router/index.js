@@ -7,7 +7,7 @@ import MembersForgotPwd1 from "@/views/MembersForgotPwd1.vue";
 import MembersProfile from "@/views/MembersProfile.vue";
 import MembersRegister from "@/views/MembersRegister.vue";
 import MembersTest from "@/views/MembersTest.vue";
-
+import MemberInformation from "../views/MemberInformation.vue";
 const routes = [
 
   {
@@ -39,6 +39,11 @@ const routes = [
     path: "/membersTest", // 相對路徑
     name: "MembersTest",
     component: MembersTest,
+  },
+  {
+    path: "/memberInformation", // 相對路徑
+    name: "MemberInformation",
+    component: MemberInformation,
   },
 
 ];

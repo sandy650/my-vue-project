@@ -23,9 +23,9 @@
           <font-awesome-icon :icon="['fas', 'shield-alt']" />
           <p>理賠專區</p>
         </div>
-        <div class="feature-card" @click="goToMemberInfo">
+        <div class="feature-card" @click="goToMemberInformation">
           <font-awesome-icon :icon="['fas', 'user']" />
-          <p>修改會員資料</p>
+          <p>會員資料</p>
         </div>
         <div class="feature-card" @click="goToActivity">
           <font-awesome-icon :icon="['fas', 'star']" />
@@ -61,7 +61,8 @@ export default {
     const goToClaims = () => router.push("/claims");
     const goToMemberInfo = () => router.push("/memberInfo");
     const goToActivity = () => router.push("/activity");
-
+    const goToMemberInformation=()=>router.push("/memberInformation");
+    
     return {
       username,
       memberLevel,
@@ -73,6 +74,7 @@ export default {
       goToClaims,
       goToMemberInfo,
       goToActivity,
+      goToMemberInformation,
     };
   },
 };
