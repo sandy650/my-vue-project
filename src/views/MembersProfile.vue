@@ -1,6 +1,7 @@
 <template>
   <div class="Profile">
     <h2>登入後畫面</h2> 
+    <p>歡迎, {{ username }}，您的身分證字號是 {{ idNumber }}</p>
    
   </div>
 </template>
@@ -12,6 +13,8 @@ import { useRouter } from "vue-router";
 
 
 export default {
+
+
   name: "membersprofile",
   setup() {
     const router = useRouter(); 
@@ -24,6 +27,19 @@ export default {
       rules,
       registerForm,
     };*/
+
+  // 定義響應式的 username
+  const username = ref("");
+  const idNumber = ref("");
+// 從 sessionStorage 獲取 
+username.value = sessionStorage.getItem("username") || "訪客";
+idNumber.value = sessionStorage.getItem("idNumber") || "未知";
+
+return {
+  username,
+  idNumber,
+};
+    
   },
   
 };

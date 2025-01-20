@@ -1,5 +1,6 @@
-import { createRouter, createWebHashHistory } from "vue-router";
-import Layout from "@/layouts/Layout.vue"; // 引入 Layout
+import { createRouter, createWebHistory } from "vue-router";
+import Layout from "@/layouts/BasicLayout.vue"; // 引入 Layout
+
 import MembersHome from "@/views/MembersHome.vue";
 import MembersLogin from "@/views/MembersLogin.vue";
 import MembersForgotPwd1 from "@/views/MembersForgotPwd1.vue";
@@ -8,46 +9,42 @@ import MembersRegister from "@/views/MembersRegister.vue";
 import MembersTest from "@/views/MembersTest.vue";
 
 const routes = [
+
   {
-    path: "/",
-    component: Layout, // Layout 作為主框架
-    children: [
-      {
-        path: "",
-        name: "MembersHome",
-        component: MembersHome, // 首頁
-      },
-      {
-        path: "membersLogin",
-        name: "MembersLogin",
-        component: MembersLogin,
-      },
-      {
-        path: "membersforgotPwd1",
-        name: "MembersForgotPwd1",
-        component: MembersForgotPwd1,
-      },
-      {
-        path: "membersprofile",
-        name: "MembersProfile",
-        component: MembersProfile,
-      },
-      {
-        path: "membersregister",
-        name: "MembersRegister",
-        component: MembersRegister,
-      },
-      {
-        path: "membersTest",
-        name: "MembersTest",
-        component: MembersTest,
-      },
-    ],
+    path: "/membersLogin", // 相對路徑，拼接為 `/membersLogin`
+    name: "MembersLogin",
+    component: MembersLogin,
+  }, {
+    path: "/membersHome", // 相對路徑，拼接為 `/membersHome`
+    name: "MembersHome",
+    component: MembersHome, // 首頁
   },
+
+  {
+    path: "/membersforgotPwd1", // 相對路徑
+    name: "MembersForgotPwd1",
+    component: MembersForgotPwd1,
+  },
+  {
+    path: "/membersprofile", // 相對路徑
+    name: "MembersProfile",
+    component: MembersProfile,
+  },
+  {
+    path: "/membersregister", // 相對路徑
+    name: "MembersRegister",
+    component: MembersRegister,
+  },
+  {
+    path: "/membersTest", // 相對路徑
+    name: "MembersTest",
+    component: MembersTest,
+  },
+
 ];
 
 const router = createRouter({
-  history: createWebHashHistory(import.meta.env.BASE_URL),
+  history: createWebHistory(import.meta.env.BASE_URL), // 改用 createWebHistory
   routes,
 });
 

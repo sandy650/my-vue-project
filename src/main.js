@@ -1,7 +1,10 @@
 //app
 import { createApp } from "vue";
 import App from "./App.vue";
+import 'ant-design-vue/dist/reset.css';
+import Antd from 'ant-design-vue';
 const app = createApp(App);
+
 
 //vuetify
 
@@ -37,9 +40,10 @@ app.use(router);
 //pinaia
 import { createPinia } from "pinia";
 app.use(createPinia())
-//mount
-app.mount("#app");
 
+//mount
+// app.mount("#app");
+app.use(Antd).mount('#app');
 
 
 //other

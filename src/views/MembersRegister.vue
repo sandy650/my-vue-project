@@ -206,8 +206,8 @@ export default {
       } catch (error) {
         console.error("API 請求失敗:", error);
         Swal.fire({
-          title: "系統錯誤",
-          text: "請稍後再試",
+          title: "無法註冊",
+          text: "已經註冊過囉!請於登入頁選擇忘記密碼或聯絡我們",
           icon: "error",
           confirmButtonText: "好",
         });
