@@ -14,6 +14,11 @@
 <script setup> 
 import { ref, provide } from "vue";
 import BasicLayout from "@/layouts/BasicLayout.vue";
+import 'bootstrap/dist/css/bootstrap.css'
+import 'bootstrap-icons/font/bootstrap-icons.css'
+import 'bootstrap/dist/js/bootstrap.js'
+
+
 
 // 定義全局響應式
 const isLoggedIn = ref(false);

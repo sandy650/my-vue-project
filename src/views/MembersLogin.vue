@@ -100,6 +100,8 @@ export default {
               "http://localhost:8081/membersLogin",
               form.value
             );
+            console.log(response);
+            
             if (response.data.success) {
               
               sessionStorage.setItem("idNumber", response.data.data.idNumber);
@@ -107,6 +109,7 @@ export default {
               sessionStorage.setItem("username", response.data.data.username);
               sessionStorage.setItem("account", response.data.data.account);
               sessionStorage.setItem("email", response.data.data.email);
+              sessionStorage.setItem("birthday", response.data.data.birthday);
                // 更新 Pinia 狀態
               userStore.login(response.data.data.username);
 

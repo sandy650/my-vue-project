@@ -11,6 +11,7 @@
           <p><strong>email:</strong> {{ email }}</p>
           <p><strong>account:</strong> {{ account }}</p>
           <p><strong>身分證字號:</strong> {{ idNumber }}</p>
+          <p><strong>生日:</strong> {{ birthday }}</p>
         </div>
       </div>
       <!-- 右側功能區塊 -->
@@ -26,6 +27,10 @@
         <div class="feature-card" @click="goToMemberInformation">
           <font-awesome-icon :icon="['fas', 'user']" />
           <p>會員資料</p>
+        </div>
+        <div class="feature-card" @click="goToMembersPassword">
+          <font-awesome-icon :icon="['fas', 'user']" />
+          <p>修改密碼</p>
         </div>
         <div class="feature-card" @click="goToActivity">
           <font-awesome-icon :icon="['fas', 'star']" />
@@ -56,12 +61,20 @@ export default {
     const email = ref(sessionStorage.getItem("email") || "訪客");
     const account = ref(sessionStorage.getItem("account") || "訪客");
     const idNumber = ref(sessionStorage.getItem("idNumber") || "訪客");
+    const birthday =ref(sessionStorage.getItem("birthday")|| "訪客");
+
+    // 檢查是否登入
+  if (!username.value || !email.value || !account.value) {
+    // 若未登入，跳轉到登入頁面
+    router.push("/login");
+  }
+
     // 跳轉功能邏輯
     const goToPolicy = () => router.push("/policy");
     const goToClaims = () => router.push("/claims");
-    const goToMemberInfo = () => router.push("/memberInfo");
     const goToActivity = () => router.push("/activity");
     const goToMemberInformation=()=>router.push("/memberInformation");
+    const goToMembersPassword=()=>router.push("/membersPassword");
     
     return {
       username,
@@ -70,11 +83,12 @@ export default {
       email,
       account,
       idNumber,
+      birthday,
       goToPolicy,
       goToClaims,
-      goToMemberInfo,
       goToActivity,
       goToMemberInformation,
+      goToMembersPassword,
     };
   },
 };

@@ -7,7 +7,7 @@
         <el-input v-model="form.account" disabled></el-input>
       </el-form-item>
 
-
+<!--
       <el-form-item label="密碼" prop="password">
         <el-input
           v-model="form.password"
@@ -23,7 +23,7 @@
           type="password"
           placeholder="請再次輸入密碼"
         ></el-input>
-      </el-form-item>
+      </el-form-item>-->
 
 
       <el-form-item label="會員姓名" prop="username">
@@ -81,8 +81,6 @@ export default {
     const form = ref({
       id: "",
       account: "",
-      password: "",
-      confirmPassword: "",
       username: "",
       gender: "",
       birthday: "",
@@ -144,9 +142,22 @@ export default {
   try {
     const response = await axios.post("http://localhost:8081/selectMember", { idNumber }); // 傳遞到請求主體
    
+    console.log(response);
+    
     if (response.data.status === "success") {
-      form.value = { ...response.data.data }; // 填充資料到表單
-      ElMessage.success("會員資料載入成功！");
+      const memberData = response.data.data;
+
+// 將後端的 birthday 陣列轉換為 YYYY-MM-DD 格式
+if (Array.isArray(memberData.birthday) && memberData.birthday.length === 3) {
+  const [year, month, day] = memberData.birthday;
+  memberData.birthday = `${year}-${String(month).padStart(2, "0")}-${String(day).padStart(2, "0")}`;
+}
+
+form.value = { ...memberData }; // 填充資料到表單
+
+console.log(form.value);
+
+      
     } else {
       ElMessage.error(response.data.message || "無法載入會員資料！");
     }
@@ -155,11 +166,12 @@ export default {
     ElMessage.error("無法取得會員資料，請稍後再試！");
   }
 };
+
     const submitForm = () => {
       editMemberForm.value.validate(async (valid) => {
         if (valid) {
           try {
-            const response = await axios.post("/editMember", form.value);
+            const response = await axios.post("http://localhost:8081/editMember", form.value);
             if (response.data.status === "success") {
               ElMessage.success("會員資料修改成功！");
             } else {
@@ -174,7 +186,7 @@ export default {
     };
 
     const closeModal = () => {
-      ElMessage.info("修改已取消");
+     
     };
 
     onMounted(fetchMemberData);

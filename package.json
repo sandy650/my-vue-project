@@ -7,7 +7,6 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview"
-    
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.7.2",
@@ -16,6 +15,8 @@
     "@mdi/font": "^7.4.47",
     "ant-design-vue": "^4.2.6",
     "axios": "^1.7.9",
+    "bootstrap": "^5.3.3",
+    "bootstrap-icons": "^1.11.3",
     "element-plus": "^2.9.3",
     "pinia": "^2.3.0",
     "sweetalert2": "^11.15.10",
@@ -34,5 +35,4 @@
     "prettier": "^3.4.2",
     "vite": "^6.0.5"
   }
-
 }
