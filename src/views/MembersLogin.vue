@@ -36,6 +36,10 @@
 
         <!-- 登入按鈕 -->
         <el-row class="custom-row">
+          <LineShareButton shareUrl="https://www.youtube.com/watch?v=BJfGQ1QKxiU" />
+          <LineShareButtonCustom shareUrl="https://www.youtube.com/watch?v=BJfGQ1QKxiU"
+  shareText="這是自訂的分享內容，快來看看！"
+/>
           <!-- 登入按鈕 -->
           <el-col :span="4" class="login-section">
             <el-button type="primary" @click="submitForm">登入</el-button>
@@ -59,6 +63,8 @@ import { useRouter } from "vue-router";
 import Swal from "sweetalert2";
 import axios from "axios";
 import { useUserStore } from "@/store/userStore";
+import LineShareButton from "@/components/LineShareButton.vue";
+import LineShareButtonCustom from "@/components/LineShareButtonCustom.vue";
 
 export default {
   name: "MembersLogin",
@@ -165,6 +171,9 @@ export default {
       convertToUppercase,
  
     };
+  },components: {
+    LineShareButton,
+    LineShareButtonCustom,
   },
 };
 </script>
